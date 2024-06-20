@@ -22,10 +22,10 @@ export const getUsers = () => {
 	});
 };
 
-export const getUserPosts = (userId) => {
+export const getUserPosts = (userId, maxNumPosts = 3) => {
 	return fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
 		.then((res) => res.json())
-		.then((post) => post);
+		.then((post) => post.slice(0, maxNumPosts));
 };
 //splice
 

@@ -47,16 +47,17 @@ export const renderUsers = (usersUl, users) => {
 	usersUl.innerHTML = '';
 	// Iterate over each user
 	users.forEach((user) => {
-		// Create list item for each user
+		//assign li creation to variable listItem
 		const listItem = document.createElement('li');
-		// Create button for each user
+		//.add class notation
+		listItem.classList.add('user-card');
+		//create button
 		const button = document.createElement('button');
-		button.textContent = user.username; // username property in spec
-		// Set button id - checking spec
-		button.id = `button-${user.id}`; // string interpolate
-		// Append button to list item
+		//text content string interpolation
+		button.textContent = `Load ${user.username}'s posts`;
+		//access userId within data set within button
+		button.dataset.userId = user.id;
 		listItem.appendChild(button);
-		// Append list item to the usersUl
 		usersUl.appendChild(listItem);
 	});
 };
@@ -64,12 +65,14 @@ export const renderUsers = (usersUl, users) => {
 export const renderPosts = (postsUl, posts) => {
 	postsUl.innerHTML = ''; //clear
 	posts.forEach((post) => {
-		const listItem = document.createElement('li');
-		const button = document.createElement('button');
-		button.textContent = post.username;
-		button.id = `button-${post.id}`;
-		listItem.appendChild(button);
-		postsUl.appendChild(listItem);
+		//for each post in posts.... do this
+		const listItem = document.createElement('li'); //create li element
+		const h2 = document.createElement('h2'); // create h2 element
+		h2.textContent = post.title; //posts is the element within posts and title is the key(post= object title is key/prop)
+		const p = document.createElement('p'); //create
+		p.textContent = post.body; //empty p tag putting post (elements of posts) , selecting the body of post and making empty p equal to post.body.
+		listItem.append(h2, p); //put h2,p into empty li ( listItem )
+		postsUl.append(listItem); //put completed listItem into postUl ( div )
 	});
 };
 
