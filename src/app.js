@@ -15,6 +15,7 @@ import {
 export default function app(appDiv) {
 	const { statusDiv, usersUl, postsUl, newUserForm, newUserDiv } =
 		setupPageBasics(appDiv);
+		/** FEEDBACK: Great job getting all test cases to pass! */
 	//destructure, objects only 1 value otherwise you will see [] array.
 
 	checkResponseStatus().then((res) => renderStatus(statusDiv, res));
